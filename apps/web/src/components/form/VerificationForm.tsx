@@ -1,6 +1,5 @@
 'use client';
 import * as React from 'react';
-import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -10,7 +9,6 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form';
-import Link from 'next/link';
 import * as z from 'zod';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -21,7 +19,6 @@ import axios from 'axios';
 const formSchema = z.object({
   name: z.string().min(3, { message: 'Silakan masukkan nama anda' }),
   username: z.string().min(3, { message: 'Silakan masukkan username anda' }),
-  // email: z.string().email({ message: 'Silakan masukkan email anda' }),
   password: z
     .string()
     .min(6, { message: 'Password minimal terdiri dari 6 karakter' }),
@@ -32,7 +29,6 @@ export default function VerificationForm() {
   const router = useRouter();
   const [nameValue, setNameValue] = useState<string>('');
   const [usernameValue, setUsernameValue] = useState<string>('');
-  //   const [emailValue, setEmailValue] = useState<string>('');
   const [passwordValue, setPasswordValue] = useState<string>('');
   const [refCodeValue, setRefCodeValue] = useState<string>('');
 
@@ -41,7 +37,6 @@ export default function VerificationForm() {
     defaultValues: {
       name: nameValue,
       username: usernameValue,
-      //   email: emailValue,
       password: passwordValue,
       refCode: refCodeValue,
     },
@@ -112,18 +107,6 @@ export default function VerificationForm() {
                   </FormItem>
                 )}
               />
-              {/* <FormField
-                control={form.control}
-                name="email"
-                render={({ field }: any) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input type="email" placeholder="Email" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              /> */}
               <FormField
                 control={form.control}
                 name="password"
@@ -162,26 +145,6 @@ export default function VerificationForm() {
             </Button>
           </div>
         </form>
-        {/* <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full" />
-          </div>
-          <div className="relative flex justify-center text-xs">
-            <span className="bg-background px-2 text-muted-foreground">
-              Atau daftar dengan metode lain
-            </span>
-          </div>
-        </div>
-        <Button variant="outline" type="button" onClick={() => signIn('google')}>
-          <Icons.google className="mr-2 h-4 w-4" />
-          Google
-        </Button>
-        <div className="relative flex justify-center text-xs">
-          <span className="bg-background px-2 text-muted-foreground">
-            Sudah punya akun?
-            <Link href="/auth/signin"> Login disini</Link>
-          </span>
-        </div> */}
       </div>
     </Form>
   );
