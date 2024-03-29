@@ -14,7 +14,6 @@ const page = () => {
   return (
     <div className="space-y-6">
       <div>
-
         <h3 className="text-lg font-medium pt-8 lg:pt-1">Profile</h3>
       </div>
       <div className="md:flex justify-items-center sm:gap-4">

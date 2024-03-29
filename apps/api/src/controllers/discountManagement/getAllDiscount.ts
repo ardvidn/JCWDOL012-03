@@ -13,9 +13,9 @@ export const GetAllDiscount = async (req: Request, res: Response) => {
     //   });
     // }
 
-    let { page = 1, limit = 5 } = req.query;
+    let { page = 1, limit = 20 } = req.query;
     page = typeof page === 'string' ? parseInt(page) : 1;
-    limit = typeof limit === 'string' ? parseInt(limit) : 5;
+    limit = typeof limit === 'string' ? parseInt(limit) : 20;
 
     const offset = (page - 1) * limit;
     const total = await prisma.storeAdmin.count();
@@ -26,6 +26,9 @@ export const GetAllDiscount = async (req: Request, res: Response) => {
     const getData = await prisma.discount.findMany({
       skip: offset,
       take: limit,
+      where: {
+        role: 'storeadmin',
+      },
       include: {
         product: {
           include: {

@@ -70,6 +70,7 @@ const createProduct = async (req: Request, res: Response) => {
       code: 200,
       message: 'Product successfully created',
       data: product,
+      another: req.file,
     });
   } catch (error) {
     console.error('Error creating product:', error);

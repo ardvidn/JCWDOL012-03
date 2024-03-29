@@ -96,7 +96,6 @@ const ProductForm = () => {
         ...formData,
         image: image || '',
       });
-
       updatedFormData.set(name, image);
       console.log(image);
 
@@ -108,7 +107,6 @@ const ProductForm = () => {
       // Buat URL preview untuk setiap gambar
       const imageUrl = URL.createObjectURL(image);
       setImagePreviews([imageUrl]);
-
       updatedFormData.set(name, image);
     } else {
       // Tangani input teks atau select biasa
@@ -118,7 +116,6 @@ const ProductForm = () => {
       });
     }
   };
-
 
   console.log(formData);
 
