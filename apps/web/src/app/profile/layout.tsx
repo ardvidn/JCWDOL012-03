@@ -14,7 +14,6 @@ interface SettingsLayoutProps {
 }
 
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
-
   const sessionCookie: string | undefined = cookies().get('user-token')?.value;
 
   return (
