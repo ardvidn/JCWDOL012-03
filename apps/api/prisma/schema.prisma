@@ -83,15 +83,16 @@ model Product {
   cart         Cart[]
   orderItem    OrderItem[]
   StockJournal StockJournal[]
-  status      Boolean
+  status       Boolean
 }
 
 model StockJournal {
-  id             Int     @id @default(autoincrement())
-  product        Product @relation(fields: [productId], references: [id])
+  id             Int      @id @default(autoincrement())
+  product        Product  @relation(fields: [productId], references: [id])
   productId      Int
   quantityBefore Int
   quantityAfter  Int
+  createdAt      DateTime @default(now())
   type           String
 }
 
